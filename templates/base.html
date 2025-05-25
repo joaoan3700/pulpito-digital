@@ -26,7 +26,7 @@
     <div class="container">
 
       <!-- Logo + toggler (sempre visível) -->
-      <a class="navbar-brand d-flex align-items-center me-4" href="{{ url_for('home') }}" style="gap: 0.5rem;">
+      <a class="navbar-brand d-flex align-items-center me-4" href="{{ url_for('index') }}" style="gap: 0.5rem;">
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="height: 60px;">
         <span class="fs-4 fw-semibold">Púlpito Digital</span>
       </a>
@@ -58,7 +58,7 @@
         {% if current_user.is_authenticated %}
         <!-- Busca e logout/login alinhados à direita -->
         <form class="d-flex align-items-center me-lg-3 mb-3 mb-lg-0" role="search" style="max-width: 300px;"
-          action="{{ url_for('home') }}" method="GET">
+          action="{{ url_for('index') }}" method="GET">
           <div class="input-group rounded shadow-sm" style="overflow: hidden;">
             <input class="form-control border-0" type="search" name="q" placeholder="Buscar posts..."
               aria-label="Buscar posts" value="{{ search_query|default('') }}"
