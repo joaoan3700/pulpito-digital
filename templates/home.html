@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if slides %}
+</div>  {# Fecha container aberto no base.html para o carrossel ficar full width #}
+
+<div id="carouselSlides" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel"
+     style="width: 100vw; margin-left: calc(-50vw + 50%); margin-top: 0;">
+  <div class="carousel-indicators">
+    {% for slide in slides %}
+      <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="{{ loop.index0 }}"
+        class="{% if loop.first %}active{% endif %}" aria-current="{% if loop.first %}true{% endif %}"
+        aria-label="Slide {{ loop.index }}">
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner">
+    {% for slide in slides %}
+    <div class="carousel-item {% if loop.first %}active{% endif %}">
+      <picture>
+        <source media="(max-width: 768px)" srcset="{{ url_for('static', filename='images/' + slide.image_file_mobile) }}">
+        <img src="{{ url_for('static', filename='images/' + slide.image_file_desktop) }}" class="d-block w-100" alt="{{ slide.title }}"
+             style="max-height: 500px; object-fit: cover;">
+      </picture>
+      <div class="carousel-caption" style="background: rgba(0,0,0,0.4); border-radius: 0.5rem;">
+        <h5>{{ slide.title }}</h5>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlides" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselSlides" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+
+<div class="container">  {# Reabre container para o restante da página #}
+{% endif %}
+
+<h1 class="mb-4 mt-3">Destaques</h1>
+
+{% if search_query %}
+  <p class="mb-3">Resultados para: <strong>{{ search_query }}</strong></p>
+{% endif %}
+
+{% if posts %}
+  {% set destaque = posts[0] %}
+  <div class="mb-2 row justify-content-start">
+    <div class="col-lg-8 mb-4">
+      <a href="{{ url_for('post_detail', post_id=destaque.id) }}" class="text-decoration-none text-white">
+        <div class="card card-highlight text-white">
+          <div class="card-img"
+            style="background: url('{{ destaque.image_url }}') center center / cover no-repeat; height: 400px; border-radius: 0.5rem;">
+          </div>
+          <div class="card-img-overlay d-flex flex-column justify-content-end"
+               style="background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 70%); border-radius: 0.5rem;">
+            <h2 class="card-title">{{ destaque.title }}</h2>
+            <p class="card-text">{{ destaque.content[:300] }}{% if destaque.content|length > 300 %}...{% endif %}</p>
+            <p class="card-text">
+              <small>{{ destaque.date_posted.strftime('%d/%m/%Y %H:%M') }} | Autor: {{ destaque.author.username }}</small>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+      {% if posts[1] %}
+        {% set segundo_post = posts[1] %}
+        <a href="{{ url_for('post_detail', post_id=segundo_post.id) }}" class="text-decoration-none text-white">
+          <div class="card card-highlight text-white">
+            <div class="card-img"
+              style="background: url('{{ segundo_post.image_url }}') center center / cover no-repeat; height: 400px; border-radius: 0.5rem;">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end"
+                 style="background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 70%); border-radius: 0.5rem;">
+              <h5 class="card-title">{{ segundo_post.title }}</h5>
+              <p class="card-text">{{ segundo_post.content[:150] }}{% if segundo_post.content|length > 150 %}...{% endif %}</p>
+              <p class="card-text">
+                <small>{{ segundo_post.date_posted.strftime('%d/%m/%Y %H:%M') }} | Autor: {{ segundo_post.author.username }}</small>
+              </p>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for post in posts[2:] %}
+    <div class="col mb-2">
+      <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
+        <div class="card card-home">
+          <img src="{{ post.image_url }}" class="card-img-top" alt="Imagem do post">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}</p>
+            <p class="text-muted mb-1">Autor: {{ post.author.username }}</p>
+            <p class="text-muted small">{{ post.date_posted.strftime('%d/%m/%Y %H:%M') }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+<p>Nenhum post disponível{% if search_query %} para a busca "{{ search_query }}"{% endif %}.</p>
+{% endif %}
+{% endblock %}

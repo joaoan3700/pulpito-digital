@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4 mt-3">Todos os Posts</h1>
+
+<a href="{{ url_for('create_post') }}" class="btn btn-success mb-3">Novo Post</a>
+
+{% if posts %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">  <!-- Atualizando para 3 cards por linha em dispositivos médios -->
+    {% for post in posts %}
+      <div class="col">
+        <div class="card card-shrink">
+          <img src="{{ url_for('static', filename='images/' ~ post.image_file) }}" class="card-img-top" alt="Imagem do post">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <!-- <p class="card-text">
+              {{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}
+            </p> -->
+            <p class="text-muted small mb-1">Autor: {{ post.author.username }}</p>
+            <p class="text-muted small">{{ post.date_posted.strftime('%d/%m/%Y %H:%M') }}</p>
+            <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-sm btn-warning">Editar</a>
+            <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Confirma a exclusão deste post?');">
+              <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Nenhum post encontrado.</p>
+{% endif %}
+{% endblock %}
+

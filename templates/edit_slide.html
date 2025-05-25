@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4 mt-3">Editar Slide</h1>
+
+<form method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.title.label(class="form-label") }}
+    {{ form.title(class="form-control", placeholder="Título do slide") }}
+    {% for error in form.title.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.description.label(class="form-label") }}
+    {{ form.description(class="form-control", placeholder="Descrição do slide (opcional)", rows=3) }}
+    {% for error in form.description.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Imagem Desktop Atual</label><br>
+    <img src="{{ url_for('static', filename='images/' + slide.image_file_desktop) }}" alt="Imagem Desktop" style="max-width: 300px; height: auto; border-radius: 0.5rem;">
+  </div>
+
+  <div class="mb-3">
+    {{ form.picture_desktop.label(class="form-label") }}
+    {{ form.picture_desktop(class="form-control") }}
+    {% for error in form.picture_desktop.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Imagem Mobile Atual</label><br>
+    <img src="{{ url_for('static', filename='images/' + slide.image_file_mobile) }}" alt="Imagem Mobile" style="max-width: 150px; height: auto; border-radius: 0.5rem;">
+  </div>
+
+  <div class="mb-3">
+    {{ form.picture_mobile.label(class="form-label") }}
+    {{ form.picture_mobile(class="form-control") }}
+    {% for error in form.picture_mobile.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Atualizar Slide</button>
+  <a href="{{ url_for('slides') }}" class="btn btn-secondary ms-2">Cancelar</a>
+</form>
+{% endblock %}

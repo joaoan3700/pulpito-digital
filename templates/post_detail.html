@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="post-detail-article my-4 mx-auto">
+  <img src="{{ post.image_url }}" alt="Imagem do post" class="post-image mb-4" />
+
+  <h1 class="post-title mb-3">{{ post.title }}</h1>
+
+  <p class="post-content mb-4">{{ post.content }}</p>
+
+  <p class="post-meta text-muted mb-4">
+    Publicado em {{ post.date_posted.strftime('%d/%m/%Y %H:%M') }} por {{ post.author.username }}
+  </p>
+
+  <a href="{{ url_for('home') }}" class="btn btn-secondary">Voltar</a>
+</article>
+{% endblock %}

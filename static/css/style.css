@@ -1,0 +1,430 @@
+/* Reset e fontes */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather', serif;
+  }
+  
+  /* Se quiser, pode ajustar títulos para ficarem mais fortes */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700; /* negrito */
+  }
+  
+  /* Navbar background cobalto */
+  .bg-cobalt {
+    background-color: #3B5998;
+    text-decoration: none;
+  }
+  
+  /* Navbar textos, links, botões e input em branco com fonte levemente mais forte */
+  .navbar.text-white,
+  .navbar.text-white .navbar-brand,
+  .navbar.text-white .nav-link,
+  .navbar.text-white .btn,
+  .navbar.text-white .form-control {
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Botão busca: outline branco, fundo transparente */
+  .navbar.text-white .btn-outline-success {
+    color: white !important;
+    border-color: white !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Hover e focus botão busca: fundo branco e texto azul cobalto */
+  .navbar.text-white .btn-outline-success:hover,
+  .navbar.text-white .btn-outline-success:focus {
+    color: #3B5998 !important;
+    background-color: white !important;
+    border-color: white !important;
+    box-shadow: none !important;
+  }
+  
+  /* Navbar toggler com borda branca */
+  .navbar-toggler {
+    border-color: white !important;
+  }
+  
+  /* Ícone toggler invertido para branco */
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+  
+  /* Zoom e cursor pointer para o card inteiro */
+  .card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  /* Aplica a transição na imagem de fundo */
+  .card.text-white .card-img {
+    transition: inherit;
+    border-radius: 0.5rem;
+    display: block;
+  }
+  
+  /* Zoom ao passar no card inteiro */
+  .card:hover {
+    transform: scale(1.015);
+  }
+  
+  /* Imagens normais dos cards menores com border-radius */
+  .card-img-top {
+    border-radius: 0.5rem;
+    display: block;
+  }
+  
+  /* Remove borda dos cards menores (a partir do terceiro post) */
+  .row.row-cols-1.row-cols-md-3.g-4 .card {
+    border: none;
+  }
+  
+  /* Botões "Últimos posts" e "Novo Post" - estilo clean sem sombra */
+  .btn-outline-light {
+    color: white !important;
+    border-color: white !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-outline-light:hover,
+  .btn-outline-light:focus {
+    background-color: white !important;
+    color: #3b5998 !important;
+    border-color: white !important;
+  }
+  
+  /* Hover link */
+  .hover-bg-white-hover:hover {
+    background-color: white !important;
+    color: #3b5998 !important;
+    transition: 0.3s;
+  }
+  
+  /* Cor texto hover para links da navbar */
+  .text-cobalt-hover:hover {
+    color: #3b5998 !important;
+    transition: color 0.3s ease;
+  }
+  
+  /* Navbar rápido (links rápidos no topo) - mesmo estilo do footer rápido */
+  .navbar-quick-links {
+    background-color: #f5f5f5; /* cinza claro */
+    padding: 0.5rem 0;
+    font-family: 'Merriweather', serif;
+  }
+  
+  .navbar-quick-links a {
+    color: #3B5998; /* azul cobalto */
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 0.75rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-quick-links a:hover {
+    color: #1d3058; /* azul mais escuro no hover */
+    text-decoration: underline;
+  }
+  
+  /* Footer links rápidos (mesmo estilo da navbar rápido) */
+  .footer-quick-links {
+    background-color: #f5f5f5; /* cinza claro */
+    color: #3B5998;
+    padding: 1rem 0;
+    font-family: 'Merriweather', serif;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .footer-quick-links a {
+    color: #3B5998; /* azul cobalto */
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-quick-links a:hover {
+    color: #1d3058; /* azul mais escuro no hover */
+  }
+  
+  /* Footer principal */
+  footer.bg-cobalt {
+    padding: 1.5rem 0;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background-color: #3B5998;
+    color: white;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ícones redes sociais no footer principal */
+  footer .social-icons {
+    margin-top: 0.5rem;
+  }
+  
+  footer .social-icons a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-icons a:hover {
+    color: #d1d9ff; /* azul clarinho no hover */
+  }
+  
+  /* Responsividade e ajustes */
+  @media (max-width: 991.98px) {
+    nav .navbar-collapse form[role="search"] {
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #navbarContent {
+      text-align: center;
+    }
+    #navbarContent > ul.navbar-nav {
+      justify-content: center !important;
+      margin-bottom: 1rem;
+      padding-left: 0;
+    }
+    #navbarContent > ul.navbar-nav > li.nav-item {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+    #navbarContent form.d-flex {
+      justify-content: center !important;
+      margin-bottom: 1rem;
+    }
+  
+    .navbar-quick-links .container {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    .navbar-quick-links a {
+      display: inline-block;
+      margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card-home {
+      height: 280px;
+    }
+    .card-highlight {
+      height: 180px;
+      overflow: hidden;
+    }
+    .card-img-top {
+      height: 50%;
+      width: auto;
+      object-fit: cover;
+    }
+    .card.text-white .card-img {
+      height: 100% !important;
+    }
+    .card-body {
+      padding: 0.5rem;
+      overflow: hidden;
+      height: 10px;
+    }
+    .card-title {
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+    .card-text {
+      font-size: 0.8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  
+    .card-shrink {
+      height: 300px;
+    }
+  
+    /* Adiciona padding bottom extra para evitar conteúdo atrás do footer fixo */
+    body {
+      padding-bottom: 120px;
+    }
+  }
+  
+  .post-detail-article {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    font-family: 'Merriweather', serif;
+    color: #222;
+  }
+  
+  .post-image {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #3b5998;
+  }
+  
+  .post-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    white-space: pre-wrap; /* preserva quebras de linha no texto */
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .post-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .post-actions .btn {
+    min-width: 100px;
+  }
+  
+  /* Ajustes para mobile */
+  @media (max-width: 576px) {
+    .post-detail-article {
+      padding: 0 1rem;
+    }
+  
+    .post-image {
+      max-height: 180px;
+    }
+  
+    .post-title {
+      font-size: 1.5rem;
+    }
+  
+    .post-content {
+      font-size: 1rem;
+    }
+    
+    .post-meta {
+      font-size: 0.8rem;
+    }
+    
+    .post-actions {
+      flex-direction: column;
+    }
+  
+    .post-actions .btn {
+      min-width: auto;
+      width: auto;
+    }
+  }
+
+/* Cards estáticos da página de terços - sem sombra nem zoom */
+.terco-static-card {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: default;
+    transition: none; /* remove zoom */
+    box-shadow: none !important; /* remove sombra se houver */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .terco-static-card .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .terco-static-card .card-title {
+    font-weight: 700;
+    color: #3b5998;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .terco-static-card .card-text {
+    flex-grow: 1;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .terco-static-card .btn-primary {
+    align-self: flex-start;
+    min-width: 140px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .terco-static-card .btn-primary:hover {
+    background-color: #2d4373;
+    border-color: #2d4373;
+  }
+
+  .terco-static-card:hover {
+    transform: none !important;
+    box-shadow: none !important; /* garante que não aparece sombra ao passar o mouse */
+    cursor: default; /* muda cursor para padrão, indicando que não é clicável no card inteiro */
+  }
+  
+  /* Responsividade */
+  @media (max-width: 576px) {
+    .terco-static-card .card-title {
+      font-size: 1.1rem;
+    }
+    .terco-static-card .card-text {
+      font-size: 0.9rem;
+    }
+  }
+
+.accordion-head {
+  background-color: #3B5998;
+  color: #fff;
+}
+  
+.accordion-body {
+    font-weight: 600; /* semi-bold */
+  }
+
+
+.accordion-button::after {
+  filter: invert(1);
+  opacity: 1 !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1);
+  opacity: 1 !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #3B5998;
+    color: white;
+  }
+
+.justificado {
+    text-align: justify;
+  }
