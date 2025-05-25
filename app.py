@@ -52,13 +52,13 @@ def login():
         if user and check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Login realizado com sucesso!', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('index'))
         else:
             flash('Usuário ou senha incorretos.', 'danger')
     return render_template('login.html', form=form)
 
 @app.route("/")
-def home():
+def index():
     posts = Post.query.all()
     for post in posts:
         post.image_url = url_for('static', filename='images/' + post.image_file)
@@ -67,7 +67,7 @@ def home():
     for slide in slides:
         slide.image_url = url_for('static', filename='images/' + slide.image_file_desktop)
 
-    return render_template('home.html', posts=posts, slides=slides)
+    return render_template('index.html', posts=posts, slides=slides)
 
 @app.route("/posts")
 @login_required
@@ -90,7 +90,7 @@ def create_post():
         db.session.add(post)
         db.session.commit()
         flash('Post criado com sucesso!', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     return render_template('create_post.html', form=form)
 
 @app.route("/edit_post/<int:post_id>", methods=['GET', 'POST'])
@@ -99,7 +99,7 @@ def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         flash('Você não tem autorização para editar este post.', 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     form = PostForm()
     if form.validate_on_submit():
@@ -111,7 +111,7 @@ def edit_post(post_id):
             post.image_file = picture_file
         db.session.commit()
         flash('Post atualizado com sucesso!', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
@@ -124,11 +124,11 @@ def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         flash('Você não tem autorização para deletar este post.', 'danger')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     db.session.delete(post)
     db.session.commit()
     flash('Post deletado com sucesso!', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 @app.route("/logout")
 @login_required
