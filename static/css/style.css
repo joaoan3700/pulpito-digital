@@ -110,7 +110,7 @@ html, body {
   
   /* Cor texto hover para links da navbar */
   .text-cobalt-hover:hover {
-    color: #3b5998 !important;
+    color: #3B5998 !important;
     transition: color 0.3s ease;
   }
   
@@ -290,6 +290,7 @@ html, body {
     font-size: 1.1rem;
     line-height: 1.6;
     white-space: pre-wrap; /* preserva quebras de linha no texto */
+    font-weight: 700; /* negrito para fortalecer texto do collapse */
   }
   
   .post-meta {
@@ -339,7 +340,7 @@ html, body {
     }
   }
 
-/* Cards estáticos da página de terços - sem sombra nem zoom */
+  /* Cards estáticos da página de terços - sem sombra nem zoom */
 .terco-static-card {
     border: 1px solid #ddd;
     border-radius: 0.5rem;
@@ -400,31 +401,32 @@ html, body {
     }
   }
 
-.accordion-head {
-  background-color: #3B5998;
-  color: #fff;
-}
-  
-.accordion-body {
-    font-weight: 600; /* semi-bold */
+  /* Collapse botão full width com texto centralizado e margem inferior */
+  .collapse-button {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
   }
 
-
-.accordion-button::after {
-  filter: invert(1);
-  opacity: 1 !important;
-}
-
-.accordion-button:not(.collapsed)::after {
-  filter: invert(1);
-  opacity: 1 !important;
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: #3B5998;
-    color: white;
+  /* Collapse conteúdo full width, com padding confortável e texto forte */
+  .collapse {
+    width: 100%;
   }
 
-.justificado {
+  .collapse .card-body {
+    font-weight: 700; /* negrito para o conteúdo */
+  }
+
+  /* Classe para texto justificado */
+  .justificado {
     text-align: justify;
   }
+
+  @media (max-width: 576px) {
+  .collapse .card-body {
+    max-height: none !important;
+    height: auto !important;
+    padding: 1rem; /* garante espaçamento */
+  }
+}

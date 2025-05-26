@@ -1,71 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="mt-3 mb-4">Terços</h1>
+<h1 class="mt-3 mb-4 text-center">Terços</h1>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  
   <div class="col">
-    <div class="card terco-static-card h-100">
-      <!-- Imagem opcional -->
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço Mariano</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço Mariano para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_mariano') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço Mariano</a>
-      </div>
+    <div class="terco-block p-3 border rounded h-100 d-flex flex-column">
+      <h5 class="mb-2">Terço Mariano</h5>
+      <p class="flex-grow-1">Descrição breve do Terço Mariano para contextualizar o visitante.</p>
+      <a href="{{ url_for('terco_mariano') }}" class="btn btn-primary align-self-start mt-auto">Ver Terço Mariano</a>
     </div>
   </div>
   
   <div class="col">
-    <div class="card terco-static-card h-100">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço da Misericórdia</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço dos Senhores para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço dos Senhores</a>
-      </div>
+    <div class="terco-block p-3 border rounded h-100 d-flex flex-column">
+      <h5 class="mb-2">Terço da Misericórdia</h5>
+      <p class="flex-grow-1">Descrição breve do Terço da Misericórdia para contextualizar o visitante.</p>
+      <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary align-self-start mt-auto">Ver Terço da Misericórdia</a>
     </div>
   </div>
 
-  <div class="col">
-    <div class="card terco-static-card h-100">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço da Misericórdia</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço dos Senhores para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço dos Senhores</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card terco-static-card h-100">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço da Misericórdia</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço dos Senhores para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço dos Senhores</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card terco-static-card h-100">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço da Misericórdia</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço dos Senhores para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço dos Senhores</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card terco-static-card h-100">
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">Terço da Misericórdia</h5>
-        <p class="card-text flex-grow-1">Descrição breve do Terço dos Senhores para contextualizar o visitante.</p>
-        <a href="{{ url_for('terco_misericordia') }}" class="btn btn-primary mt-auto align-self-start">Ver Terço dos Senhores</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Adicione mais cards para outros terços -->
-
+  <!-- Mais terços aqui se precisar -->
+  
 </div>
+
+<style>
+  /* Espaçamento superior extra só para mobile */
+  @media (max-width: 576px) {
+    .terco-block {
+      margin-top: 1rem;
+    }
+  }
+</style>
+
 {% endblock %}
